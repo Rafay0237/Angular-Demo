@@ -1,0 +1,120 @@
+
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    overflow-y: scroll; 
+    height: 70vh;
+    scrollbar-width: none; 
+    overflow-y:scroll
+  }
+
+  .profile-container::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+  }
+  
+  .profile-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  .profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .profile-details {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: none;
+  }
+  
+  .profile-details h3 {
+    font-size: 1.2em;
+  }
+  
+  .profile-details p {
+    margin-top: -10px;
+    font-size: 0.9em;
+    color: #555;
+  }
+
+
+  .demo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .searchBar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: white;
+    width: 250px;
+  }
+  
+  .search-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 25px;
+  }
+  
+  .search-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .page-main{
+    padding: 20px;
+    max-width: 80%;
+    margin: auto;
+    background: linear-gradient(to right, black,rgb(68, 12, 68),#461012, rgb(56, 49, 49));
+    height: 90vh;
+    overflow: hidden;
+  }
+
+  #contact{
+    text-wrap: nowrap;
+  }
+
+  .user-row{
+    display: flex;
+    background-color: white;
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

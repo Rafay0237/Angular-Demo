@@ -1,0 +1,79 @@
+
+.user-row{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    overflow-y: scroll; 
+    height: 70vh;
+    width: 70%;
+    margin-top: 40px;
+    background-color: white;
+    height: 50vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-container::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+  }
+  
+  .profile-container p{
+    max-width: 600px;
+  }
+
+  .profile-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .profile-details {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: none;
+  }
+  
+  .profile-details h3 {
+    font-size: 2rem;
+  }
+  
+  .profile-details p {
+    margin-top: -20px;
+    font-size: 1.2em;
+    color: #555;
+  }
+
+  #contact{
+    text-wrap: nowrap;
+    font-size: 1.2em;
+  }
+
+  .user-detail-page{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f6f6f6;
+  }

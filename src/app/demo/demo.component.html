@@ -1,0 +1,39 @@
+<div class="page-main">
+  <div class="demo-header">
+    <h1 class="heading">Users</h1>
+    <div class="searchBar">
+      <input
+        type="text"
+        placeholder="Search users..."
+        id="search-input"
+        [(ngModel)]="searchTerm"
+        class="search-input"
+      />
+      <button class="search-btn">
+        <img
+          src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"
+          alt="Search Icon"
+          class="search-icon"
+        />
+      </button>
+    </div>
+  </div>
+
+  <div class="profile-container">
+    <div class="user-row" *ngFor="let user of users | search:searchTerm:['title']">
+      <div class="profile-card" (click)="navigateToUser(user.title)" style="cursor: pointer;">
+        <img
+          [src]="user.pic"
+          alt="Profile picture of {{ user.title }}"
+          class="profile-pic"
+        />
+        <div class="profile-details">
+          <h3>{{ user.title }}</h3>
+          <p>Age: {{ user.age }}</p>
+        </div>
+      </div>
+      <p id="contact">Contact: {{ user.num }}</p>
+    </div>
+  </div>  
+  
+</div>

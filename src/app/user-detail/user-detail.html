@@ -1,0 +1,28 @@
+
+
+
+<div class="user-detail-page">
+  <div *ngIf="user$ | async as user">
+    <div class="profile-container">
+      <div class="user-row">
+        <div class="profile-card">
+          <img
+            [src]="user?.pic"
+            alt="Profile picture of {{ user.title }}"
+            class="profile-pic"
+          />
+          <div class="profile-details">
+            <h3>{{ user.title }}</h3>
+            <p>Age: {{ user.age }}</p>
+          </div>
+        </div>
+        <p id="contact">Contact: {{ user.num }}</p>
+      </div>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci,
+        maiores! Eos harum et ipsam tempore sapiente dolorum eius enim. Id
+        asperiores ut nisi facere molestias corporis autem sit laboriosam eaque!
+      </p>
+    </div>
+  </div>
+</div>
