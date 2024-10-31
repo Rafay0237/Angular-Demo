@@ -15,4 +15,8 @@ export class HomePage {
   goToDemoPage() {
     this.router.navigate(['/demo']); 
   }
+
+  goToAddUser() {
+    this.router.navigate(['/add-user']);
+  }
 }

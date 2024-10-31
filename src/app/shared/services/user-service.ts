@@ -1,24 +1,18 @@
-import { Component } from '@angular/core';
-import { SearchPipe } from '../shared/pipes/search-pipe';
-import { NgForOf, NgIf } from '@angular/common'; 
-import { FormsModule } from '@angular/forms'; 
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { User,UserService } from '../shared/services/user-service';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-@Component({
-  selector: 'app-demo',
-  standalone: true,
-  imports: [NgForOf, NgIf, SearchPipe,FormsModule],
-  templateUrl: './demo.component.html',
-  styleUrl: './demo.component.css'
+export interface User {
+  title: string;
+  age: number;
+  num: string;
+  pic: string;
+}
+
+@Injectable({
+  providedIn: 'root'  
 })
-
-
-export class DemoComponent {
-  users$!: Observable<User[]>;
-
-  users = [
+export class UserService {
+  private users: User[] = [
     {
       title: 'John Doe',
       age: 25,
@@ -63,19 +57,18 @@ export class DemoComponent {
     }
   ]; 
 
-  constructor(private userService: UserService,private router: Router) {}
+  // Observable stream to watch for changes in users array
+  private usersSubject = new BehaviorSubject<User[]>(this.users);
+  users$ = this.usersSubject.asObservable();
 
-  ngOnInit() {
-    this.users$ = this.userService.users$;  
-
-    console.log(this.users$)
+  // Method to get the users array
+  getUsers(): User[] {
+    return this.users;
   }
 
-  navigateToUser(title: string) {
-    this.router.navigate(['/user', title]);
+  // Method to add a user
+  addUser(newUser: User): void {
+    this.users.push(newUser);
+    this.usersSubject.next(this.users);  // Notify all subscribers about the change
   }
-  
-    clear=[...this.users]
-    public searchTerm: string = '';
-
 }

@@ -1,0 +1,84 @@
+
+
+<div class="main">
+  <div class="form-container">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <!-- Title Input -->
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input
+          id="title"
+          formControlName="title"
+          type="text"
+          placeholder="Enter your title"
+        />
+        <div
+          *ngIf="userForm.get('title')?.invalid && userForm.get('title')?.touched"
+          class="error"
+        >
+          Title is required (minimum 3 characters).
+        </div>
+      </div>
+
+      <!-- Age Input -->
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input
+          id="age"
+          formControlName="age"
+          type="number"
+          placeholder="Enter your age"
+        />
+        <div
+          *ngIf="userForm.get('age')?.invalid && userForm.get('age')?.touched"
+          class="error"
+        >
+          Age is required and should be a positive number.
+        </div>
+      </div>
+
+      <!-- Number Input -->
+      <div class="form-group">
+        <label for="num">Phone Number:</label>
+        <input
+          id="num"
+          formControlName="num"
+          type="text"
+          placeholder="Enter your number"
+        />
+        <div
+          *ngIf="userForm.get('num')?.invalid && userForm.get('num')?.touched"
+          class="error"
+        >
+          Please enter a valid phone number.
+        </div>
+      </div>
+
+      <!-- Picture Input -->
+        <div class="form-group">
+            <label for="pic">Upload Picture:</label>
+            <input
+              id="pic"
+              formControlName="pic"
+              type="file"
+              accept="image/*"
+              class="form-control"
+              (change)="onFileSelected($event)" 
+            />
+            <div *ngIf="userForm.get('pic')?.invalid && userForm.get('pic')?.touched" class="error">
+              Picture is required.
+            </div>
+          </div>
+
+          <div *ngIf="imagePreview" class="image-container">
+            <img [src]="imagePreview" alt="Image Preview"  class="image-preview"/>
+          </div>          
+          
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="userForm.invalid">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+

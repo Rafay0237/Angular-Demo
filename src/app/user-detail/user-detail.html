@@ -1,8 +1,7 @@
 
 
 
-<div class="user-detail-page">
-  <div *ngIf="user$ | async as user">
+<div class="user-detail-page" *ngIf="user$ | async as user">
     <div class="profile-container">
       <div class="user-row">
         <div class="profile-card">
@@ -25,4 +24,3 @@
       </p>
     </div>
   </div>
-</div>

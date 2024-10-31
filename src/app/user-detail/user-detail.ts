@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common'; 
+import { NgForOf, NgIf, CommonModule } from '@angular/common'; 
 import { ActivatedRoute } from '@angular/router';
-import { Subscription,Observable } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 
 interface User {
   title: string;
@@ -15,14 +14,12 @@ interface User {
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [NgForOf, NgIf],
+  imports: [NgForOf, NgIf, CommonModule], 
   templateUrl: './user-detail.html',
   styleUrls: ['./user-detail.scss']
 })
 export class UserDetailComponent implements OnInit, OnDestroy {
-//   user: User | undefined; 
-  user$!: Observable<User | undefined>; 
-
+  user$!: Observable<User | undefined>;
   routeSub!: Subscription;
   users: User[] = [
     {
@@ -68,28 +65,17 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       pic: 'https://randomuser.me/api/portraits/men/3.jpg'
     }
   ];
-  
+
   constructor(private route: ActivatedRoute) {}
 
-//   ngOnInit(): void {
-//     this.routeSub = this.route.params.subscribe(params => {
-//       const userTitle = params['title'];
-//       const user = this.users.find(user => user.title === userTitle);
-//       this.user = user;
-//       if (!this.user) 
-//         console.log(`User with title '${userTitle}' not found.`);
-     
-//     });
-//   }
-
-    ngOnInit(): void {
-        this.user$ = this.route.params.pipe(
-        map(params => {
-            const userTitle = params['title'];
-            return this.users.find(user => user.title === userTitle);
-        })
-        );
-    }
+  ngOnInit(): void {
+    this.user$ = this.route.params.pipe(
+      map(params => {
+        const userTitle = params['title'];
+        return this.users.find(user => user.title === userTitle);
+      })
+    );
+  }
 
   ngOnDestroy(): void {
     if (this.routeSub) {

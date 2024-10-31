@@ -154,15 +154,21 @@
     }
 
     .demo-btn {
-     position: absolute;
-     top: 40px;
-     right: 40px;
      padding: 10px;
      background-color: black;
      color: white;
      border: none;
      border-radius: 5px;
      cursor: pointer;
+    }
+
+    .tab-bar{
+     position: absolute;
+     top: 40px;
+     right: 40px;
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
     }
   
     @media screen and (max-width: 650px) {
@@ -325,9 +331,17 @@
         </div>
       </div>
     </div>
-    <button class="demo-btn" 
-    (click)="goToDemoPage()"
-    >Visit Demo Page</button>
+    
+    <div class="tab-bar">
+      <button class="demo-btn" 
+      (click)="goToDemoPage()"
+      >View Demo Users</button>
+      <button class="demo-btn"
+      (click)="goToAddUser()">
+        Add User
+      </button>
+    </div>
+
   </main>
   
   
