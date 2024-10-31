@@ -48,7 +48,8 @@ export class AddUserComponent {
 
       const newUser: User = {
         ...this.userForm.value,
-        pic: this.selectedImage ? this.selectedImage.name : "https://randomuser.me/api/portraits/men/20.jpg",  
+        // pic: this.selectedImage ? this.selectedImage.name : "https://randomuser.me/api/portraits/men/20.jpg"
+        pic: "https://randomuser.me/api/portraits/men/20.jpg" 
       };
 
       this.userService.addUser(newUser);  
