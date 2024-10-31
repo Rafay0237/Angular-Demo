@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { UserService, User } from '../shared/services/user-service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
@@ -15,7 +16,7 @@ export class AddUserComponent {
   selectedImage: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
 
-  constructor(private fb: FormBuilder, private userService: UserService) { 
+  constructor(private fb: FormBuilder, private userService: UserService,private router: Router) { 
     this.userForm = this.fb.group({
       title: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(1)]],
@@ -51,6 +52,8 @@ export class AddUserComponent {
       };
 
       this.userService.addUser(newUser);  
+      alert("New User Added!")
+      this.router.navigate(['/user', newUser.title]);
     }
   }
 }

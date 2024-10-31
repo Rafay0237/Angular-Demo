@@ -1,81 +1,30 @@
 import { Component } from '@angular/core';
 import { SearchPipe } from '../shared/pipes/search-pipe';
-import { NgForOf, NgIf } from '@angular/common'; 
+import { NgForOf, NgIf, CommonModule } from '@angular/common'; // Import CommonModule
 import { FormsModule } from '@angular/forms'; 
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User,UserService } from '../shared/services/user-service';
+import { User, UserService } from '../shared/services/user-service';
 
 @Component({
   selector: 'app-demo',
   standalone: true,
-  imports: [NgForOf, NgIf, SearchPipe,FormsModule],
+  imports: [NgForOf, NgIf, CommonModule, SearchPipe, FormsModule], // Add CommonModule here
   templateUrl: './demo.component.html',
   styleUrl: './demo.component.css'
 })
-
-
 export class DemoComponent {
   users$!: Observable<User[]>;
 
-  users = [
-    {
-      title: 'John Doe',
-      age: 25,
-      num: '+1-555-1234',
-      pic: 'https://randomuser.me/api/portraits/men/1.jpg' 
-    },
-    {
-      title: 'Jane Smith',
-      age: 30,
-      num: '+1-555-5678',
-      pic: 'https://randomuser.me/api/portraits/women/2.jpg' 
-    },
-    {
-      title: 'Mike Ross',
-      age: 35,
-      num: '+1-555-9876',
-      pic: 'https://randomuser.me/api/portraits/men/3.jpg' 
-    },
-    {
-      title: 'John',
-      age: 40,
-      num: '+1-555-9876',
-      pic: 'https://randomuser.me/api/portraits/men/3.jpg' 
-    },
-    {
-      title: 'Khan',
-      age: 25,
-      num: '+1-555-9876',
-      pic: 'https://randomuser.me/api/portraits/men/3.jpg' 
-    },
-    {
-      title: 'Tacy',
-      age: 15,
-      num: '+1-555-9876',
-      pic: 'https://randomuser.me/api/portraits/men/3.jpg' 
-    },
-    {
-      title: 'Ross',
-      age: 55,
-      num: '+1-555-9876',
-      pic: 'https://randomuser.me/api/portraits/men/3.jpg' 
-    }
-  ]; 
-
-  constructor(private userService: UserService,private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.users$ = this.userService.users$;  
-
-    console.log(this.users$)
+    this.users$ = this.userService.users$;
   }
 
   navigateToUser(title: string) {
     this.router.navigate(['/user', title]);
   }
-  
-    clear=[...this.users]
-    public searchTerm: string = '';
 
+  public searchTerm: string = '';
 }

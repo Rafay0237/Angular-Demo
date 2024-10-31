@@ -20,7 +20,8 @@
   </div>
 
   <div class="profile-container">
-    <div class="user-row" *ngFor="let user of users | search:searchTerm:['title']">
+    <!-- Use async with nullish coalescing to handle null values -->
+    <div class="user-row" *ngFor="let user of (users$ | async) ?? [] | search: searchTerm: ['title']">
       <div class="profile-card" (click)="navigateToUser(user.title)" style="cursor: pointer;">
         <img
           [src]="user.pic"
@@ -34,6 +35,5 @@
       </div>
       <p id="contact">Contact: {{ user.num }}</p>
     </div>
-  </div>  
-  
+  </div>
 </div>
