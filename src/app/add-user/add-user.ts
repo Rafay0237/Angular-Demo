@@ -52,8 +52,8 @@ export class AddUserComponent {
       };
 
       this.userService.addUser(newUser);  
-      alert("New User Added!")
-      this.router.navigate(['/user', newUser.title]);
+      alert("New User Added, Seach your user")
+      this.router.navigate(['/demo']);
     }
   }
 }

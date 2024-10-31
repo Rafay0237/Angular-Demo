@@ -66,6 +66,10 @@ export class UserService {
     return this.users;
   }
 
+  getUser(title: string): User | undefined {
+    return this.users.find(user => user.title === title); 
+  }
+   
   // Method to add a user
   addUser(newUser: User): void {
     this.users.push(newUser);
