@@ -5,16 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class SearchPipe implements PipeTransform {
-  transform(items: any[], searchTerm: string, fields: string[] = []): any[] {
-    if (!items || !searchTerm) {
-      return items;
+  transform(users: any[], searchTerm: string, fields: string[] = []): any[] {
+    if (!users || !searchTerm) {
+      return users;
     }
 
     searchTerm = searchTerm.toLowerCase();
 
-    return items.filter((item) => {
+    return users.filter((user) => {
       return fields.some((field) => {
-        return item[field]?.toString().toLowerCase().includes(searchTerm);
+        return user[field]?.toString().toLowerCase().includes(searchTerm);
       });
     });
   }
